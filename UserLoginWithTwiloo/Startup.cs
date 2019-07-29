@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using UserLoginWithTwiloo.Classes;
+using UserLoginWithTwiloo.Models;
 
 namespace UserLoginWithTwiloo
 {
@@ -30,7 +32,8 @@ namespace UserLoginWithTwiloo
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddDbContext<TwilooTestContext>();
+            services.AddScoped(typeof(DatabaseSpExec));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
